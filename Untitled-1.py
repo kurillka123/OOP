@@ -26,6 +26,18 @@ class Player :
     def heal(self, ammount: int):
         self.hр += ammount
 
+    def attack(self, anemy):
+        if self.hp <= 0:
+            return
+        elif anemy.hp <= 0:
+            return
+        anemy.hp -= self.attack_power
+        print(self.name, 'атаковал', anemy.name)
+        self.show()
+        self.hp -= anemy.attack_power
+        print(anemy.name, 'атаковал', self.name)
+        self.anemy.show()
+
 
 class Game:
     def __init__(self) -> None:
@@ -35,11 +47,9 @@ class Game:
         self.fight()
 
     def fight(self) -> None:
-        self.anemy.hp -= self.player.attack_power
-        print(self.player.name, 'атаковал', self.anemy.name)
-        self.player.show()
-        self.player.hp -= self.anemy.attack_power
-        print(self.anemy.name, 'атаковал', self.player.name)
-        self.anemy.show()
+        while self.is_running:
+            self.player.attack()
+        #
+    
 Game()
 
