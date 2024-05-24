@@ -89,12 +89,11 @@ class App:
         self.time_total = self.end_time - self.start_time + 100
         hours = self.time_total // 3600
         minutes = self.time_total // 60 % 60
-        seconds = self.time_total % 60
-        s = round(seconds)
+        seconds = round(self.time_total % 60)
         tkinter.Label(self.main_frame,
                       text='Викторина завершена!').pack(pady=(25, 0))
         tkinter.Label(self.main_frame,
-                      text=f'время: {hours:02} / {minutes:02} / {s:02}'
+                      text=f'время: {hours:02} / {minutes:02} / {seconds:02}'
                       ).pack(pady=(15, 0))
         tkinter.Label(self.main_frame,
                       text=f'Всего вопросов: {len(questions)}'
